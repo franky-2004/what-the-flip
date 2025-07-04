@@ -13,7 +13,7 @@ This is a memory card matching game — flip two cards to find a pair.
 ## How to Run
 1. Open in an IDE of your choice (ideally IntelliJ)
 2. Make sure JavaFX is set up with VM options:
-3. Run `Main.java`
+3. Run `WhatTheFlip.java`
 
 ## Tech
 - Java

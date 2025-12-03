@@ -3,7 +3,6 @@
 A group project for my Java 2 class, built using JavaFX.  
 This is a memory card matching game — flip two cards to find a pair.
 
-> ⚠️ This is an incomplete project.
 
 ## Features
 - JavaFX UI with card flipping
@@ -13,7 +12,7 @@ This is a memory card matching game — flip two cards to find a pair.
 ## How to Run
 1. Open in an IDE of your choice (ideally IntelliJ)
 2. Make sure JavaFX is set up with VM options:
-3. Run `Main.java`
+3. Run `WhatTheFlip.java`
 
 ## Tech
 - Java

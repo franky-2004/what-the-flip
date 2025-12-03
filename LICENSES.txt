@@ -1,0 +1,71 @@
+===================================================
+What The Flip - Resource Licenses and Attributions
+===================================================
+
+-------------------------------
+Resources - Music + Sound Effects
+-------------------------------
+
+- Intro Screen Music:
+  "Lofi Background Music" by DELOSound
+  Source: https://pixabay.com/music/beats-lofi-background-music-337568/
+
+- In-Game Music:
+  "Elevator Music (Bossa Nova Background Music Version 60s)" by music_for_video
+  Source: https://pixabay.com/music/elevator-music-elevator-music-bossa-nova-background-music-version-60s-10900/
+
+- Incorrect Guess Sound Effect:
+  "Negative Beeps" by freesound_community
+  Source: https://pixabay.com/sound-effects/negative-beeps-6008/
+
+- Match All Cards Sound Effect:
+  "Tada" by u_8g40a9z0la
+  Source: https://pixabay.com/sound-effects/tada-234709/
+
+- Play Button Sound Effect:
+  "Cute Level Up 3" by floraphonic
+  Source: https://pixabay.com/sound-effects/cute-level-up-3-189853/
+
+- Opening Menu Sound Effect:
+  "Select 003" by CreatorsHome
+  Source: https://pixabay.com/sound-effects/select-003-337609/
+
+- Matching Two Cards Sound Effect:
+  "Message Alert" by LIECIO
+  Source: https://pixabay.com/sound-effects/message-alert-190042/
+
+Note: All audio files sourced from Pixabay are free for commercial and non-commercial use under Pixabay’s Content License:
+https://pixabay.com/service/license/
+
+---------------------
+Resources - Images
+---------------------
+
+- Card Theme Images (Fruit and Fish):
+  Artwork by bluecarrot16
+  Source: https://opengameart.org/content/lpc-food
+  License: CC-BY 4.0 (https://creativecommons.org/licenses/by/4.0/)
+
+---------------------
+Resources - Fonts
+---------------------
+
+- DynaPuff:
+  Designed by Toshi Omagari and Jennifer Daniel
+  Source: https://fonts.google.com/specimen/DynaPuff
+  License: Open Font License (OFL) - https://scripts.sil.org/cms/scripts/page.php?item_id=OFL_web
+
+- Raleway:
+  Designed by Matt McInerney, Pablo Impallari, and Rodrigo Fuenzalida
+  Source: https://fonts.google.com/specimen/Raleway
+  License: Open Font License (OFL)
+
+---------------------
+General Notes
+---------------------
+
+All third-party assets used in this project are either:
+- Licensed for free use with attribution (e.g., CC-BY or Pixabay License), or
+- Open source and redistributable under the Open Font License.
+
+Please review individual links for full license terms and attribution requirements.

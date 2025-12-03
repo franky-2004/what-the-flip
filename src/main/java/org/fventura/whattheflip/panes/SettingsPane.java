@@ -1,48 +1,70 @@
 package org.fventura.whattheflip.panes;
 import javafx.geometry.Pos;
-import javafx.scene.text.Font;
+import javafx.scene.paint.Color;
+import org.fventura.whattheflip.FontManager;
 import org.fventura.whattheflip.WhatTheFlip;
 import javafx.scene.control.Button;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
-import org.fventura.whattheflip.scenes.GameScene;
 import org.fventura.whattheflip.scenes.IntroScene;
-import org.fventura.whattheflip.scenes.SettingsScene;
+
+/**
+ * @author Sean Manser
+ * @studentID 0520988
+ * @date June 13th 2025
+ *
+ * This class creates the scene that shows the settings pane
+ * Our settings include a mute button, a button that switches between our two themes (Our default fish theme, and our fruit theme),
+ * as well as a Back button that brings you back to the intro pane.
+ */
 
 public class SettingsPane extends BorderPane {
     public SettingsPane() {
         // Title of pane
         Text settingsTitle = new Text("Settings");
-        settingsTitle.setFont(Font.font("Book Antiqua", 40));
+        settingsTitle.setFont(FontManager.titleFont);
+        settingsTitle.setTranslateY(-50);
+        settingsTitle.setFill(Color.DODGERBLUE);
 
-        //Buttons: Mute, Themes?, Fonts?
+        // Mute button - label depends on whether audio is currently muted
         Button muteAudio;
         if (WhatTheFlip.audioPlayer.isMuted()) {
             muteAudio = new Button("Unmute Audio");
         } else {
             muteAudio = new Button("Mute Audio");
         }
+        muteAudio.setFont(FontManager.textFont);
         muteAudio.setPrefWidth(200);
+        muteAudio.setPrefHeight(50);
 
-        Button changeTheme = new Button("Change Theme");
-        changeTheme.setPrefWidth(200);
+        // Theme toggle button - updates label based on current theme
+        Button themeToggle = new Button();
+        themeToggle.setFont(FontManager.textFont);
+        themeToggle.setPrefWidth(200);
+        themeToggle.setPrefHeight(50);
 
+        if (WhatTheFlip.selectedTheme.equals("fish")) {
+            themeToggle.setText("Theme: Fish");
+        } else {
+            themeToggle.setText("Theme: Fruit");
+        }
 
+        // Back button to return to the intro screen
         Button backButton = new Button("Back");
+        backButton.setFont(FontManager.textFont);
         backButton.setPrefWidth(200);
+        backButton.setPrefHeight(50);
 
-        // Action Events for buttons
-
-        // This sends you back to the intro screen
+        // Go back to the intro screen
         backButton.setOnAction(e->{
             WhatTheFlip.mainStage.setScene(new IntroScene());
         });
-        
+
+        // Toggle mute state and update the button text
         muteAudio.setOnAction(e-> {
             WhatTheFlip.audioPlayer.muteAudio();
 
-            // Change button text based on current state
             if (muteAudio.getText().equals("Mute Audio")) {
                 muteAudio.setText("Unmute Audio");
             } else {
@@ -50,21 +72,22 @@ public class SettingsPane extends BorderPane {
             }
         });
 
+        // Toggle theme between fish and fruit
+        themeToggle.setOnAction(e -> {
+            if (WhatTheFlip.selectedTheme.equals("fish")) {
+                WhatTheFlip.selectedTheme = "fruit";
+                themeToggle.setText("Theme: Fruit");
+            } else {
+                WhatTheFlip.selectedTheme = "fish";
+                themeToggle.setText("Theme: Fish");
+            }
+        });
 
-        // Layout
-        VBox settingsVBox = new VBox(settingsTitle, muteAudio, changeTheme, backButton);
+        // Layout setup
+        VBox settingsVBox = new VBox(settingsTitle, muteAudio, themeToggle, backButton);
         this.setCenter(settingsVBox);
         settingsVBox.setAlignment(Pos.CENTER);
         settingsVBox.setSpacing(15);
 
-
-        //Animation - translate from bottom?
-
-
-        // Hover animations for buttons - slight scale increase
-
-
     }
-
-
 }

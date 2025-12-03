@@ -1,0 +1,6 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="WhatTheFlip">
+    <output-path>$PROJECT_DIR$/out/artifacts/WhatTheFlip</output-path>
+    <root id="archive" name="WhatTheFlip.jar" />
+  </artifact>
+</component>

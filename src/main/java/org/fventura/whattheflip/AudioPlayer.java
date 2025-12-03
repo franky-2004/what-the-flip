@@ -5,43 +5,61 @@ import javafx.scene.media.MediaPlayer;
 
 import java.io.File;
 
-public class AudioPlayer {
-    MediaPlayer mediaPlayer = null; // This is for SFX
-    MediaPlayer bgMusicPlayer = null; // This is for background music
-    Media media = null;
-    private boolean isMuted = false;
-    private String currentTrack = ""; // Track currently playing audio file
+/**
+ * @author Sean Manser
+ * @studentID 0520988
+ * @date June 27th 2025
+ *
+ * This class creates and audio player and has various methods for interactions such as matching cards and opening menus
+ */
 
-    // Toggle mute on/off
+
+public class AudioPlayer {
+    MediaPlayer mediaPlayer = null; // MediaPlayer for sound effects
+    MediaPlayer bgMusicPlayer = null; // MediaPlayer for background music
+    Media media = null;
+    private boolean isMuted = false; // Stores the mute state
+    private String currentTrack = ""; // Keeps track of the currently playing background music
+
+    // Toggles the mute state for both music and sound effects
     public void muteAudio() {
         // Flips the current mute state (if muted, change to unmuted, and vise versa)
         isMuted = !isMuted;
-        // This only runs if media is playing
+
+        // Mute SFX
         if (mediaPlayer != null) {
             // Mutes the current audio
             mediaPlayer.setMute(isMuted);
         }
 
+        // Mute background music
         if (bgMusicPlayer != null) {
             bgMusicPlayer.setMute(isMuted);
         }
     }
 
+    // Plays music for the intro screen (only starts if it is not already playing)
     public void playIntroScreenAudio() {
         String filePath = "audio/introScreenAudio.mp3";
+
+        // Avoid restarting the same track
         if (filePath.equals(currentTrack) && bgMusicPlayer != null && bgMusicPlayer.getStatus() == MediaPlayer.Status.PLAYING) {
             return;
         }
-        stopCurrentAudio();
+
+        stopCurrentAudio(); // Stops any music that's already playing
+
         File file = new File(filePath);
         media = new Media(file.toURI().toString());
         bgMusicPlayer = new MediaPlayer(media);
+        bgMusicPlayer.setCycleCount(MediaPlayer.INDEFINITE); // Music loops forever
         bgMusicPlayer.setMute(isMuted); // Mutes or unmutes the audio depending on if the value of isMuted is true or false
         bgMusicPlayer.play();
 
         currentTrack = filePath;
     }
 
+    // Plays sound when all cards are matched
     public void playAllCardsMatchedAudio() {
         File file = new File("audio/allCardsMatchedAudio.mp3");
         media = new Media(file.toURI().toString());
@@ -50,6 +68,7 @@ public class AudioPlayer {
         mediaPlayer.play();
     }
 
+    // Plays sound for a correct card match
     public void playCorrectMatchAudio() {
         File file = new File("audio/correctMatchAudio.mp3");
         media = new Media(file.toURI().toString());
@@ -58,6 +77,7 @@ public class AudioPlayer {
         mediaPlayer.play();
     }
 
+    // Plays sound for a failed match
     public void playFailMatchAudio() {
         File file = new File("audio/failMatchAudio.mp3");
         media = new Media(file.toURI().toString());
@@ -66,24 +86,27 @@ public class AudioPlayer {
         mediaPlayer.play();
     }
 
+    // Plays music during the game
     public void playInGameAudio() {
         String filePath = "audio/inGameAudio.mp3";
 
-        // If already playing the same track, don't restart music
+        // Avoid restarting the same track
         if (filePath.equals(currentTrack) && bgMusicPlayer != null && bgMusicPlayer.getStatus() == MediaPlayer.Status.PLAYING) {
             return;
         }
 
-        stopCurrentAudio();
+        stopCurrentAudio(); // Stops any previous music
 
         File file = new File(filePath);
         media = new Media(file.toURI().toString());
         bgMusicPlayer = new MediaPlayer(media);
+        bgMusicPlayer.setCycleCount(MediaPlayer.INDEFINITE); // Music loops forever
         bgMusicPlayer.setMute(isMuted);
         bgMusicPlayer.play();
         currentTrack = filePath; // Updates the currentTrack
     }
 
+    // Plays sound when opening a menu
     public void playOpenMenuAudio() {
         File file = new File("audio/openMenuAudio.mp3");
         media = new Media(file.toURI().toString());
@@ -92,6 +115,7 @@ public class AudioPlayer {
         mediaPlayer.play();
     }
 
+    // Plays sound when clicking a button
     public void playButtonAudio() {
         File file = new File("audio/playButtonAudio.mp3");
         media = new Media(file.toURI().toString());
@@ -100,7 +124,7 @@ public class AudioPlayer {
         mediaPlayer.play();
     }
 
-    // BUG FIX: Preventing Game music from playing in the intro scene
+    // Stops the current background music and resets the track info
     public void stopCurrentAudio() {
         if (bgMusicPlayer != null) {
             bgMusicPlayer.stop();
@@ -109,7 +133,7 @@ public class AudioPlayer {
         }
     }
 
-    // For settings pane - check if sound is muted
+    // Returns the current mute state (used in settings)
     public boolean isMuted() {
         return isMuted;
     }
